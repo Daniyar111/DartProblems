@@ -1,14 +1,55 @@
-# Files and directories created by pub
+### Dart ###
 .dart_tool/
 .packages
-**/.idea/workspace.xml
-**/.idea/tasks.xml
-*.iws
-# Remove the following pattern if you wish to check in your lock file
+build/
 pubspec.lock
 
-# Conventional directory for build outputs
-build/
-
-# Directory created by dartdoc
 doc/api/
+
+### Intellij ###
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+.idea/**/contentModel.xml
+
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+.idea/**/gradle.xml
+.idea/**/libraries
+
+cmake-build-*/
+
+.idea/**/mongoSettings.xml
+
+*.iws
+
+out/
+
+.idea_modules/
+
+atlassian-ide-plugin.xml
+
+.idea/replstate.xml
+
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+.idea/httpRequests
+
+.idea/caches/build_file_checksums.ser
+
+**___jb_tmp___
+
+### Intellij Patch ###
+.idea/sonarlint
