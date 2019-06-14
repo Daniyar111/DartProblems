@@ -57,6 +57,8 @@ void streamCake(){
 
 }
 
+// async* -> Stream; yield -> Stream
+
 Future<int> sumStream(Stream<int> numbers) async{
   int sum = 0;
   await for (int num in numbers){
@@ -130,3 +132,60 @@ Stream<int> countStreamError(int to) async* {
 }
 
 Future<int> lastPositive(Stream<int> stream) => stream.lastWhere((integer) => integer >= 0);
+
+
+//------------------------------------------
+
+Stream<String> lines(Stream<String> source) async*{
+
+  String partial = '';
+
+  await for (String chunk in source){
+    List<String> lines = chunk.split('\n');
+    lines[0] += partial;
+    partial = lines.removeLast();
+    for(String line in lines){
+      yield line;
+    }
+  }
+  if(partial.isNotEmpty){
+    yield partial;
+  }
+}
+
+Stream<String> source() async*{
+  for(int i = 0; i < 10; i++){
+    yield 'source $i ';
+  }
+}
+
+
+Stream<int> counterStream = Stream<int>.periodic(Duration(seconds: 1), (event) => event + 1).take(15);
+
+
+Stream<int> timedCounter(Duration interval, [int maxCount])async*{
+  int i = 0;
+  while (true){
+    await Future.delayed(interval);
+    yield i++;
+    if(i == maxCount){
+      break;
+    }
+  }
+}
+
+
+//Iterable<Future<int>> futureNumbers<T>() sync*{
+//  for(int i = 0; i < 10; i++){
+//    Iterable<Future<int>> iterable = [];
+//    yield ;
+//  }
+//}
+
+Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
+  for(Future<T> future in futures){
+    T result = await future;
+    yield result;
+  }
+}
+

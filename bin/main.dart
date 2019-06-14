@@ -14,5 +14,23 @@ main(List<String> arguments) async {
 
 //  print(genIterates(10));
 
-  print(countDownFromSync(10));
+//  print(countDownFromSync(10));
+
+//  lines(source()).listen((event)=> print(event));
+
+//  await counterStream.forEach((numbers) => print(numbers));
+
+//  counterStream.listen((numbers) => print(numbers));
+
+//  Stream<int> doubleCounterStream = counterStream.map((int time) => time * 2);
+//  await doubleCounterStream.forEach((int time) => print(time));
+
+//  Stream<int> otherCounterStream = counterStream
+//      .where((int x) => x.isEven)
+//      .expand((int x) => [x, x])
+//      .take(5);
+//  await otherCounterStream.forEach((int x) => print(x));
+
+//  timedCounter(Duration(milliseconds: 800), 10).listen((event) => print(event));
+
 }
