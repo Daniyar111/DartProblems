@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'dart:mirrors';
+
 
 class Cake{
 
@@ -163,6 +165,43 @@ Stream<String> source() async*{
 Stream<int> counterStream = Stream<int>.periodic(Duration(seconds: 1), (event) => event + 1).take(15);
 
 
+
+
+Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
+  for(Future<T> future in futures){
+    T result = await future;
+    yield result;
+  }
+}
+
+
+// async* wait subscribers automatically
+
+void listenAfterDelay() async {
+
+  Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
+  await Future.delayed(const Duration(seconds: 5));
+
+  await for(int n in counterStream){
+    print(n);
+  }
+}
+
+void listenWithPause(){
+
+  Stream<int> counterStream = timedCounter(const Duration(seconds: 1), 15);
+  StreamSubscription<int> subscription;
+
+  subscription = counterStream.listen((int counter){
+    print(counter);
+    if(counter == 5){
+      subscription.pause(Future.delayed(const Duration(seconds: 5)));
+    }
+  });
+}
+
+
+
 Stream<int> timedCounter(Duration interval, [int maxCount])async*{
   int i = 0;
   while (true){
@@ -175,18 +214,40 @@ Stream<int> timedCounter(Duration interval, [int maxCount])async*{
 }
 
 
-//Iterable<Future<int>> futureNumbers<T>() sync*{
-//  for(int i = 0; i < 10; i++){
-//    Iterable<Future<int>> iterable = [];
-//    yield ;
-//  }
-//}
+Stream<int> timedCounterWithController(Duration interval, [int maxCount]) {
+  StreamController<int> controller;
 
+  Timer timer;
+  int counter = 0;
 
-Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
-  for(Future<T> future in futures){
-    T result = await future;
-    yield result;
+  void tick(_) {
+    counter++;
+    controller.add(counter); // Ask stream to send counter values as event.
+    if (counter == maxCount) {
+      timer.cancel();
+      controller.close(); // Ask stream to shut down and tell listeners.
+    }
   }
+
+  void startTimer() {
+    timer = Timer.periodic(interval, tick);
+  }
+
+  void stopTimer() {
+    if (timer != null) {
+      timer.cancel();
+      timer = null;
+    }
+  }
+
+  controller = StreamController<int>(
+      onListen: startTimer,
+      onPause: stopTimer,
+      onResume: startTimer,
+      onCancel: stopTimer
+  );
+
+  return controller.stream;
 }
+
 

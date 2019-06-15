@@ -1,3 +1,4 @@
+import 'package:DartProblems/leetcode.dart';
 import 'package:DartProblems/stream_education.dart';
 
 main(List<String> arguments) async {
@@ -32,4 +33,15 @@ main(List<String> arguments) async {
 //  await otherCounterStream.forEach((int x) => print(x));
 
 //  timedCounter(Duration(milliseconds: 800), 10).listen((event) => print(event));
+
+//  var iterable = new Iterable.generate(5, (i) => Future(() => 'string'));
+//  var iter = new Iterable.generate(10, (i) => 'str');
+//  print(iter);
+//  streamFromFutures(iterable).listen((event) => print(event), onError: (error) => print('error $error'));
+
+//  listenAfterDelay();
+
+//  listenWithPause();
+
+  twoSumHardCode([2, 11, 7, 15], 9);
 }
