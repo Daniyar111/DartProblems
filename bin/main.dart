@@ -1,4 +1,5 @@
-import 'package:DartProblems/leetcode.dart';
+import 'package:DartProblems/abstract_classes.dart';
+import 'package:DartProblems/hardcode_streamcode.dart';
 import 'package:DartProblems/stream_education.dart';
 
 main(List<String> arguments) async {
@@ -43,5 +44,25 @@ main(List<String> arguments) async {
 
 //  listenWithPause();
 
-  twoSumHardCode([2, 11, 7, 15], 9);
+//  twoSumHardCode([2, 11, 7, 15], 9);
+
+  // Polymorphism
+  Vehicle car = new Car(180, 4);
+
+  // Casting
+  int doors = (car as Car).doors;
+
+  // Calling abstract method
+  car.accelerate();
+
+
+  //-------
+
+  PowerGrid grid = new PowerGrid();
+
+  NuclearPlant nuclear = new NuclearPlant();
+  SolarPlant solar = new SolarPlant();
+
+  grid.addPlant(nuclear);
+  grid.addPlant(solar);
 }
