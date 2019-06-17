@@ -45,24 +45,20 @@ main(List<String> arguments) async {
 //  listenWithPause();
 
 //  twoSumHardCode([2, 11, 7, 15], 9);
+//  twoSum([2, 11, 7, 15], 9);
 
-  // Polymorphism
-  Vehicle car = new Car(180, 4);
+//  // Polymorphism
+//  Vehicle car = new Car(180, 4);
+//  // Casting
+//  int doors = (car as Car).doors;
+//  // Calling abstract method
+//  car.accelerate();
+//  //-------
+//  PowerGrid grid = new PowerGrid();
+//  NuclearPlant nuclear = new NuclearPlant();
+//  SolarPlant solar = new SolarPlant();
+//  grid.addPlant(nuclear);
+//  grid.addPlant(solar);
 
-  // Casting
-  int doors = (car as Car).doors;
-
-  // Calling abstract method
-  car.accelerate();
-
-
-  //-------
-
-  PowerGrid grid = new PowerGrid();
-
-  NuclearPlant nuclear = new NuclearPlant();
-  SolarPlant solar = new SolarPlant();
-
-  grid.addPlant(nuclear);
-  grid.addPlant(solar);
+  print('${jewelsAndStones('z', 'ZZZ')}');
 }
