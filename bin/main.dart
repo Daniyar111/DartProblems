@@ -60,5 +60,7 @@ main(List<String> arguments) async {
 //  grid.addPlant(nuclear);
 //  grid.addPlant(solar);
 
-  print('${jewelsAndStones('z', 'ZZZ')}');
+//  print('${jewelsAndStones('z', 'ZZZ')}');
+
+  print(toShortWord('internationalization'));
 }

@@ -73,3 +73,37 @@ String toLowerCase(String string){
 }
 // end
 
+// https://codeforces.com/problemset/problem/4/A
+// start
+bool isEventWatermelon(int weight){
+
+  if (weight > 3 && weight.isEven){
+    return true;
+  }
+  return false;
+}
+// end
+
+
+// https://codeforces.com/problemset/problem/1/A
+// start
+int platesQuantity(int length, int width, int plateLength){
+
+  return (length / plateLength).ceil() + (width / plateLength).ceil() + 1;
+}
+// end
+
+// https://codeforces.com/problemset/problem/71/A
+// start
+String toShortWord(String word){
+  String short = '';
+  if(word.length > 10){
+    short += word.substring(0, 1);
+    String temp = word.substring(1, word.length - 1);
+    short += temp.length.toString();
+    short += word.substring(word.length - 1, word.length);
+    return short;
+  }
+  return word;
+}
+//end
