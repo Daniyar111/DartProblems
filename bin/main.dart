@@ -1,6 +1,8 @@
 import 'package:DartProblems/abstract_classes.dart';
 import 'package:DartProblems/hardcode_streamcode.dart';
+import 'package:DartProblems/model.dart';
 import 'package:DartProblems/stream_education.dart';
+import 'package:DartProblems/typedefs.dart';
 
 main(List<String> arguments) async {
 
@@ -62,5 +64,46 @@ main(List<String> arguments) async {
 
 //  print('${jewelsAndStones('z', 'ZZZ')}');
 
-  print(toShortWord('internationalization'));
+//  print(toShortWord('internationalization'));
+
+//  int a = 20;
+//  assert((int b){
+//    print(b);
+//    return true;
+//  }(a ~/ 2));
+
+
+//  Logger logger = new Logger();
+//  logger.log('Hello world');
+//  logger.output = timeStampLoggerOutputFunction;
+//  logger.log('hello');
+//
+//  Join dotJoin = (String first, String second) => dot(first, second);
+//  Join snakecaseJoin = (String first, String second) => snake_case(first, second);
+//  print('${joinWith(dotJoin, 'Hello', 'World')}');
+//  print('${joinWith(snakecaseJoin, 'Hello', 'World')}');
+
+
+  final PersonModel model = PersonModel.fromJson(
+      {
+        "next":null,
+        "previous":null,
+        "count":2,
+        "result":[
+          {
+            "id":1,
+            "cusname":"jhon",
+            "cusadress":"somewhere "
+          },
+          {
+            "id":2,
+            "cusname":"jhon2",
+            "cusadress":"somewhere2 "
+          },
+
+        ]
+      }
+  );
+  print(model.result[0].cusaddress);
+  print(model.result[1].id.toString());
 }

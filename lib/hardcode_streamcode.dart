@@ -107,3 +107,14 @@ String toShortWord(String word){
   return word;
 }
 //end
+
+/// DFS
+/// BFS
+/// Matching Parenthesis problem
+/// Using Hash Tables
+/// Variables/Pointers manipulation
+/// Reverse Linked List (duplicates, removing duplicates)
+/// Sorting Fundamentals (QuickSort, MergeSort, BubbleSort, runtime of a sort, time space complexity)
+/// Recursion
+/// Custom Data Structures (OOP)
+/// Binary Search

@@ -38,7 +38,6 @@ void streamCake(){
         sink.add(new Cake('banana'));
       }
       else if(cake.type == 'chocolate'){
-        await Future.delayed(Duration(seconds: 4));
         sink.add(new Cake('chocolate'));
       }
       else{
@@ -47,15 +46,22 @@ void streamCake(){
     }
   );
 
+  controller.stream
+      .map((order) => order.cake)
+      .transform(transformer)
+      .listen((cake) => print('Here is ${cake.type}'), onError: (error) => print(error));
+
+
+
   controller.sink.add(orderFirst);
   controller.sink.add(orderSecond);
   controller.sink.add(orderThird);
   controller.sink.add(orderForth);
+
+
+  controller.close();
+
   
-  controller.stream
-    .map((order) => order.cake)
-    .transform(transformer)
-    .listen((cake) => print('Here is ${cake.type}'), onError: (error) => print(error));
 
 }
 
