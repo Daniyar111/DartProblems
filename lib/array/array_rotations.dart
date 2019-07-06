@@ -1,9 +1,11 @@
 
-/// task: Left rotate by n element
+/// ---------------------------------------------------------------
+/// task: Rotate array by n element
 /// input: ex -> [1, 2, 3, 4, 5, 6, 7], rotateSize = 2;
 /// output: [3, 4, 5, 6, 7, 1, 2]
+/// ---------------------------------------------------------------
 
-
+/// [1, 2, 3, 4, 5, 6, 7] -> [1, 2], [3, 4, 5, 6, 7] -> [3, 4, 5, 6, 7, 1, 2]
 List<int> arrayLeftRotateUsingTemp(List<int> array, int rotateSize){
 
   List<int> temp = array.sublist(0, rotateSize);
@@ -13,6 +15,7 @@ List<int> arrayLeftRotateUsingTemp(List<int> array, int rotateSize){
 }
 
 
+/// [1, 2, 3, 4, 5, 6, 7] -> [2, 3, 4, 5, 6, 7, 1] -> [3, 4, 5, 6, 7, 1, 2]
 // Time -> O(array.length * rotateSize)
 List<int> arrayLeftRotateOneByOne(List<int> array, int rotateSize){
 
@@ -28,6 +31,9 @@ List<int> arrayLeftRotateOneByOne(List<int> array, int rotateSize){
 }
 
 
+/// [1, 2, 3, 4, 5, 6, 7] -> [3, 2, 3, 4, 5, 6, 7] -> [3, 2, 5, 4, 5, 6, 7] -> [3, 2, 5, 4, 7, 6, 7] ->
+/// -> [3, 2, 5, 4, 7, 6, 2] -> [3, 4, 5, 4, 7, 6, 2] -> [3, 4, 5, 6, 7, 6, 2] -> [3, 4, 5, 6, 7, 1, 2]
+// Time -> O(array.length)
 List<int> arrayLeftRotateJuggling(List<int> array, int rotateSize){
 
   int gcd(int rotSize, int arrayLength) {
@@ -38,11 +44,11 @@ List<int> arrayLeftRotateJuggling(List<int> array, int rotateSize){
       return gcd(arrayLength, rotSize % arrayLength);
     }
   }
+
   final int arrLength = array.length;
   int i, j, k, temp;
   int g_c_d = gcd(rotateSize, arrLength);
   for (i = 0; i < g_c_d; i++) {
-
     temp = array[i];
     j = i;
     while (true) {
@@ -55,8 +61,66 @@ List<int> arrayLeftRotateJuggling(List<int> array, int rotateSize){
       }
       array[j] = array[k];
       j = k;
+      print(array);
     }
     array[j] = temp;
   }
   return array;
+}
+
+
+/// [1, 2, 3, 4, 5, 6, 7] ->  [2, 1], [7, 6, 5, 4, 3] -> [2, 1, 7, 6, 5, 4, 3] -> [3, 4, 5, 6, 7, 1, 2]
+
+List<int> arrayRotateReversedFirst(List<int> array, int rotateSize){
+
+  List<int> firstTemp = [];
+  List<int> secondTemp = [];
+  for(int i = rotateSize - 1; i >= 0; i--){
+    firstTemp.add(array[i]);
+  }
+
+  for(int i = array.length - 1; i >= rotateSize; i--){
+    secondTemp.add(array[i]);
+  }
+  array = []..addAll(firstTemp + secondTemp);
+
+  List<int> reversed = [];
+  for(int i = array.length - 1; i >= 0; i--){
+    reversed.add(array[i]);
+  }
+  return reversed;
+}
+
+
+
+/// [1, 2, 3, 4, 5, 6, 7] -> [2, 1], [7, 6, 5, 4, 3] -> [3, 4, 5, 6, 7, 1, 2]
+
+List<int> arrayRotateReversedSecond(List<int> array, int rotateSize){
+
+  void reverseArray(List<int> array, int start, int end){
+    int temp;
+    while(start < end){
+      temp = array[start];
+      array[start] = array[end];
+      array[end] = temp;
+      start++;
+      end--;
+    }
+  }
+
+  reverseArray(array, 0, rotateSize - 1);
+  reverseArray(array, rotateSize, array.length - 1);
+  reverseArray(array, 0, array.length - 1);
+
+  return array;
+}
+
+/// [1, 2, 3, 4, 5, 6, 7] -> [2, 1], [7, 6, 5, 4, 3] -> [2, 1, 7, 6, 5, 4, 3] -> [3, 4, 5, 6, 7, 1, 2]
+
+List<int> arrayRotateReversedThird(List<int> array, int rotateSize){
+
+  List<int> first = array.sublist(0, rotateSize).reversed.toList();
+  List<int> second = array.sublist(rotateSize, array.length).reversed.toList();
+  array = []..addAll(first + second);
+  return array.reversed.toList();
 }
