@@ -70,7 +70,7 @@ List<int> arrayLeftRotateJuggling(List<int> array, int rotateSize){
 
 
 /// [1, 2, 3, 4, 5, 6, 7] ->  [2, 1], [7, 6, 5, 4, 3] -> [2, 1, 7, 6, 5, 4, 3] -> [3, 4, 5, 6, 7, 1, 2]
-
+// Time -> O(2n) -> O(n)
 List<int> arrayRotateReversedFirst(List<int> array, int rotateSize){
 
   List<int> firstTemp = [];
@@ -94,7 +94,7 @@ List<int> arrayRotateReversedFirst(List<int> array, int rotateSize){
 
 
 /// [1, 2, 3, 4, 5, 6, 7] -> [2, 1], [7, 6, 5, 4, 3] -> [3, 4, 5, 6, 7, 1, 2]
-
+// Time -> O(2n) -> O(n)
 List<int> arrayRotateReversedSecond(List<int> array, int rotateSize){
 
   void reverseArray(List<int> array, int start, int end){
@@ -116,11 +116,27 @@ List<int> arrayRotateReversedSecond(List<int> array, int rotateSize){
 }
 
 /// [1, 2, 3, 4, 5, 6, 7] -> [2, 1], [7, 6, 5, 4, 3] -> [2, 1, 7, 6, 5, 4, 3] -> [3, 4, 5, 6, 7, 1, 2]
-
+// Time -> O(n)
 List<int> arrayRotateReversedThird(List<int> array, int rotateSize){
 
   List<int> first = array.sublist(0, rotateSize).reversed.toList();
   List<int> second = array.sublist(rotateSize, array.length).reversed.toList();
   array = []..addAll(first + second);
   return array.reversed.toList();
+}
+
+
+/// ---------------------------------------------------------------
+/// task: Search n element in a sorted and rotated array
+/// input: ex -> [1, 2, 3, 4, 5, 6, 7], key 4;
+/// output: Found at index 3
+/// ---------------------------------------------------------------
+
+int findElement(List<int> array, int key){
+  for(int k in array){
+    if (k == key){
+      return array.indexOf(k);
+    }
+  }
+  return -1;
 }
