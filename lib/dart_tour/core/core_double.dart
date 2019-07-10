@@ -14,18 +14,18 @@ void coreDouble(){
   print(d.sign); // -0.0
 
 
-  //True if the number is finite; otherwise, false.
-  //The only non-finite numbers are NaN, positive infinity, and negative infinity.
-
-  print(a.isFinite); // true
-  print(d.isInfinite); // false
-
-  print((2.3 / 0.0).isInfinite); // true
-  print((0.0 / 0.0).isNaN); // true
-
-  print(c.isNegative); // true
-
-  print(b.runtimeType); // double
+//  //True if the number is finite; otherwise, false.
+//  //The only non-finite numbers are NaN, positive infinity, and negative infinity.
+//
+//  print(a.isFinite); // true
+//  print(d.isInfinite); // false
+//
+//  print((2.3 / 0.0).isInfinite); // true
+//  print((0.0 / 0.0).isNaN); // true
+//
+//  print(c.isNegative); // true
+//
+//  print(b.runtimeType); // double
 
 
   /// ------------ Methods -------------
