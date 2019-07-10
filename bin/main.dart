@@ -1,6 +1,8 @@
 import 'package:DartProblems/abstract_classes.dart';
 import 'package:DartProblems/hardcode_streamcode.dart';
+import 'package:DartProblems/hash_code.dart';
 import 'package:DartProblems/model.dart';
+import 'package:DartProblems/operators.dart';
 import 'package:DartProblems/stream_education.dart';
 import 'package:DartProblems/typedefs.dart';
 
@@ -84,26 +86,28 @@ main(List<String> arguments) async {
 //  print('${joinWith(snakecaseJoin, 'Hello', 'World')}');
 
 
-  final PersonModel model = PersonModel.fromJson(
-      {
-        "next":null,
-        "previous":null,
-        "count":2,
-        "result":[
-          {
-            "id":1,
-            "cusname":"jhon",
-            "cusadress":"somewhere "
-          },
-          {
-            "id":2,
-            "cusname":"jhon2",
-            "cusadress":"somewhere2 "
-          },
+//  final PersonModel model = PersonModel.fromJson(
+//      {
+//        "next":null,
+//        "previous":null,
+//        "count":2,
+//        "result":[
+//          {
+//            "id":1,
+//            "cusname":"jhon",
+//            "cusadress":"somewhere "
+//          },
+//          {
+//            "id":2,
+//            "cusname":"jhon2",
+//            "cusadress":"somewhere2 "
+//          },
+//
+//        ]
+//      }
+//  );
+//  print(model.result[0].cusaddress);
+//  print(model.result[1].id.toString());
 
-        ]
-      }
-  );
-  print(model.result[0].cusaddress);
-  print(model.result[1].id.toString());
+  cascadeNotation();
 }

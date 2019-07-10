@@ -1,4 +1,4 @@
-import 'package:DartProblems/array/array_rotations.dart';
+import 'package:DartProblems/data_structure/array/array_rotations.dart';
 
 main(List<String> arguments) async {
 
