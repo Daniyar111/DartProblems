@@ -1,4 +1,5 @@
 import 'package:DartProblems/abstract_classes.dart';
+import 'package:DartProblems/exceptions.dart';
 import 'package:DartProblems/hardcode_streamcode.dart';
 import 'package:DartProblems/hash_code.dart';
 import 'package:DartProblems/model.dart';
@@ -109,5 +110,11 @@ main(List<String> arguments) async {
 //  print(model.result[0].cusaddress);
 //  print(model.result[1].id.toString());
 
-  cascadeNotation();
+//  cascadeNotation();
+//  onClause();
+//  clauseWithException();
+//  clauseWithExceptionAndStacktrace();
+//  finallyClause();
+//  customException();
+  customExceptionSecond();
 }
