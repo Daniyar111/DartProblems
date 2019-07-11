@@ -14,18 +14,6 @@ void coreDouble(){
   print(d.sign); // -0.0
 
 
-//  //True if the number is finite; otherwise, false.
-//  //The only non-finite numbers are NaN, positive infinity, and negative infinity.
-//
-//  print(a.isFinite); // true
-//  print(d.isInfinite); // false
-//
-//  print((2.3 / 0.0).isInfinite); // true
-//  print((0.0 / 0.0).isNaN); // true
-//
-//  print(c.isNegative); // true
-
-
   /// ------------ Methods -------------
 
   print(a.abs()); // 0.0
@@ -53,7 +41,7 @@ void coreDouble(){
   print(c.floorToDouble()); // -3.0
   print(d.floorToDouble()); // -0.0
 
-  // same mod
+  // same to mod (%)
   print(b.remainder(1.2)); // 1.1340000000000001
 
   print(a.round()); // 0
@@ -77,8 +65,6 @@ void coreDouble(){
   print(d.truncateToDouble()); // -0.0
 
 
-//  a = math.max(-1, math.min(1, a));
-//  print(a);
 
   /// ------------ Static Methods -------------
 

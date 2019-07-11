@@ -1,5 +1,9 @@
 void coreInt(){
 
+  // −2,147,483,648 - 2,147,483,647
+
+  // BigInt -> -9,223,372,036,854,775,808 - 9,223,372,036,854,775,807
+
   int port = int.fromEnvironment("defaultPort", defaultValue: 80);
   print(port);
 
@@ -12,7 +16,6 @@ void coreInt(){
   /// ------------ Properties ----------------
 
   // x.bitLength == (-x - 1).bitLength
-
   print(a.bitLength); // 0 -> 00000000 (0)
   print(b.bitLength); // 2 -> 00000010 (2)
   print(c.bitLength); // -5 -> 11111011 (3)
