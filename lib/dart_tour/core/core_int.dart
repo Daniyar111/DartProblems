@@ -72,7 +72,37 @@ void coreInt(){
   print(a.roundToDouble()); // 0.0
   print(b.roundToDouble()); // 2.0
   print(c.roundToDouble()); // -5.0
-  
-  print(23.toRadixString(3));
+
+  // Convert to range[2-36] (binary - base36)
+  print(237.toRadixString(2));  // 11101101
+  print(237.toRadixString(10));  // 237
+  print(237.toRadixString(16));  // ed
+  print(3134243038.toRadixString(16));  // bad0c0de
+  print(3134243038.toRadixString(36));  // 1fu1pem
+
+  // To Signed -> x == x.toSigned(x.bitLength + 1)
+  print(16.toSigned(5));  // 00010000 -> 11110000 -> -16
+  print(239.toSigned(5));  // 11101111 -> 00001111 -> 15
+
+  // https://www.youtube.com/watch?v=4qH4unVtJkE
+
+  // To Unsigned -> x == x.toUnsigned(x.bitLength)
+  print((-1).toUnsigned(5));  // 11111111 -> 00011111 -> 31
+
+  print(a.truncate()); // 0
+  print(b.truncate()); // 2
+  print(c.truncate()); // -5
+
+  print(a.truncateToDouble()); // 0.0
+  print(b.truncateToDouble()); // 2.0
+  print(c.truncateToDouble()); // -5.0
+
+
+  /// ------------ Static Methods -------------
+
+  print(int.parse('1011', radix: 2));  // 11
+  print(int.parse('ed', radix: 16));  // 237
+  print(int.parse('23'));  // 23
+  print(int.tryParse('1,2', radix: 3));  // null
 
 }

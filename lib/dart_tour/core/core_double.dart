@@ -24,8 +24,6 @@ void coreDouble(){
 //  print((0.0 / 0.0).isNaN); // true
 //
 //  print(c.isNegative); // true
-//
-//  print(b.runtimeType); // double
 
 
   /// ------------ Methods -------------
