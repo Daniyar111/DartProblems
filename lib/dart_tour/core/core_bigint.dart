@@ -8,11 +8,11 @@ void coreBigInt(){
   BigInt d = BigInt.tryParse('9223372036854775806');
   BigInt e = BigInt.tryParse('-4324324354333543543');
 
-  print(a);
-  print(b);
-  print(c);
-  print(d);
-  print(e);
+  print(a);  // 123
+  print(b);  // 1232
+  print(c);  // 123432321321321
+  print(d);  // 9223372036854775806
+  print(e);  // -4324324354333543543
 
 
   /// ------------ Properties ----------------
