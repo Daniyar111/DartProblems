@@ -2,8 +2,6 @@ void coreInt(){
 
   // −2,147,483,648 - 2,147,483,647
 
-  // BigInt -> -9,223,372,036,854,775,808 - 9,223,372,036,854,775,807
-
   int port = int.fromEnvironment("defaultPort", defaultValue: 80);
   print(port);
 
@@ -57,13 +55,13 @@ void coreInt(){
 
   // Greatest Common Divisor
   print(40.gcd(5)); // 5
-  print(-23.gcd(6)); // -1
+  print((-23).gcd(6)); // 1
   print(90.gcd(60)); // 30
 
   // (result * number) % modulo == 1
   print(3.modInverse(11));  // 4
   print(10.modInverse(17)); // 12
-  print(-10.modInverse(17)); // -12
+  print((-10).modInverse(17)); // 5
 
   // result = number^exponent % modulo
   print(23895.modPow(15, 14189)); // 344
