@@ -37,4 +37,7 @@ void coreObject(){
 
   print(person == person1); // true
   print(identical(person, person1)); // false, cause they are not references to the same object
+  print(identical(person, person)); // true
+  print(identityHashCode(person)); // random ints
+  print(person.hashCode); // 356 -> get hashCode
 }
