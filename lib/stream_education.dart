@@ -61,8 +61,6 @@ void streamCake(){
 
   controller.close();
 
-  
-
 }
 
 // async* -> Stream; yield -> Stream
