@@ -1,5 +1,6 @@
 import 'package:DartProblems/abstract_classes.dart';
 import 'package:DartProblems/exceptions.dart';
+import 'package:DartProblems/futures_isolates_eventloop.dart';
 import 'package:DartProblems/hardcode_streamcode.dart';
 import 'package:DartProblems/hash_code.dart';
 import 'package:DartProblems/model.dart';
@@ -116,5 +117,6 @@ main(List<String> arguments) async {
 //  clauseWithExceptionAndStacktrace();
 //  finallyClause();
 //  customException();
-  customExceptionSecond();
+//  customExceptionSecond();
+  mainAsync();
 }
