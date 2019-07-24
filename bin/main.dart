@@ -118,5 +118,6 @@ main(List<String> arguments) async {
 //  finallyClause();
 //  customException();
 //  customExceptionSecond();
-  mainAsync();
+  AsyncMethodsThird third = AsyncMethodsThird();
+  third.mainAsync();
 }
