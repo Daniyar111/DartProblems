@@ -1,8 +1,8 @@
-
 /// ----------------- Futures ----------------------
 
+
 void mainFuture(){
-  
+
   print('Before the Future');
 
   Future((){
@@ -141,7 +141,7 @@ class AsyncMethodsSecond{
 
 class AsyncMethodsThird{
 
-  void mainAsync() async {
+  void mainAsync() {
 
     methodA();
     methodB();
@@ -155,7 +155,7 @@ class AsyncMethodsThird{
   }
 
 
-  methodB() async {
+  methodB(){
     print('B start');
     methodC('B');
     print('B end');
@@ -179,24 +179,86 @@ class AsyncMethodsThird{
     print('D');
   }
 
-  // Todo need to finish
+// Output of the first:
+// A
+// B start
+// C start from B
+// B end
+// C start from main
+// D
+// C running Future from B
+// C end of Future from B
+// C end from B
+// C running Future from main
+// C end of Future from main
+// C end from main
+
+}
+
+/// THIRD end
+
+/// ----------------------------------------------------------------------------
+
+
+/// FORTH start
+
+class AsyncMethodsForth{
+
+  Future mainAsync() async {
+
+    methodA();
+    await methodB();
+    await methodC('main');
+    methodD();
+  }
+
+
+  methodA(){
+    print('A');
+  }
+
+
+  methodB() async {
+    print('B start');
+    await methodC('B');
+    print('B end');
+  }
+
+
+  methodC(String from) async {
+    print('C start from $from');
+
+    await Future((){
+      print('C running Future from $from');
+    }).then((_){
+      print('C end of Future from $from');
+    });
+
+    print('C end from $from');
+  }
+
+
+  methodD(){
+    print('D');
+  }
 
 // Output of the first:
 // A
 // B start
 // C start from B
+// C running Future from B
+// C end of Future from B
 // C end from B
 // B end
 // C start from main
-// C end from main
-// D
-// C running Future from B
-// C end of Future from B
 // C running Future from main
 // C end of Future from main
+// C end from main
+// D
 
 }
 
-/// SECOND end
+/// FORTH end
 
 /// ----------------------------------------------------------------------------
+
