@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 /// ----------------- Futures ----------------------
 
 
@@ -279,6 +281,7 @@ class Loop{
     print('end of loop');
   }
 
+
   void method2() async {
 
     List<String> myArray = <String>['a','b','c'];
@@ -291,6 +294,7 @@ class Loop{
 
     print('end of loop');
   }
+
 
   Future<void> delayedPrint(String value) async {
 
@@ -315,4 +319,54 @@ class Loop{
   // delayedPrint: c (directly after)
   // end of loop (right after)
 }
+
+
+class Isolates{
+
+  mainIsolate() async {
+
+    var receivePort = new ReceivePort();
+    await Isolate.spawn(echo, receivePort.sendPort);
+
+    // The 'echo' isolate sends it's SendPort as the first message
+    var sendPort = await receivePort.first;
+
+    var msg = await sendReceive(sendPort, "foo");
+    print('received $msg');
+    msg = await sendReceive(sendPort, "bar");
+    print('received $msg');
+  }
+
+
+// the entry point for the isolate
+  echo(SendPort sendPort) async {
+    // Open the ReceivePort for incoming messages.
+    var port = new ReceivePort();
+
+    // Notify any other isolates what port this isolate listens to.
+    sendPort.send(port.sendPort);
+
+    await for (var msg in port) {
+      var data = msg[0];
+      SendPort replyTo = msg[1];
+      replyTo.send(data);
+      if (data == "bar") port.close();
+    }
+  }
+
+  /// sends a message on a port, receives the response,
+  /// and returns the message
+  Future sendReceive(SendPort port, msg) {
+    ReceivePort response = new ReceivePort();
+    port.send([msg, response.sendPort]);
+    return response.first;
+  }
+
+  // Output:
+
+  // received foo
+  // received bar
+}
+
+// Todo research https://www.didierboelens.com/2019/01/futures---isolates---event-loop/
 
