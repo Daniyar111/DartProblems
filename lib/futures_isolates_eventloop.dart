@@ -262,3 +262,57 @@ class AsyncMethodsForth{
 
 /// ----------------------------------------------------------------------------
 
+
+
+class Loop{
+
+  void method1(){
+
+    List<String> myArray = <String>['a','b','c'];
+
+    print('before loop');
+
+    myArray.forEach((String value) async {
+      await delayedPrint(value);
+    });
+
+    print('end of loop');
+  }
+
+  void method2() async {
+
+    List<String> myArray = <String>['a','b','c'];
+
+    print('before loop');
+
+    for(int i=0; i<myArray.length; i++) {
+      await delayedPrint(myArray[i]);
+    }
+
+    print('end of loop');
+  }
+
+  Future<void> delayedPrint(String value) async {
+
+    await Future.delayed(Duration(seconds: 1));
+    print('delayedPrint: $value');
+  }
+
+
+  // Output
+
+  // method1:
+  // before loop
+  // end of loop
+  // delayedPrint: a (after 1 sec)
+  // delayedPrint: b (directly after)
+  // delayedPrint: c (directly after)
+
+  // method2:
+  // before loop
+  // delayedPrint: a (after 1 sec)
+  // delayedPrint: b (directly after)
+  // delayedPrint: c (directly after)
+  // end of loop (right after)
+}
+
